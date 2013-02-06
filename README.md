@@ -9,9 +9,9 @@ Usage
 -----
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	from cli-carriots import Client
+	from clicarriots import Client
 	import time, datetime
-	
+
 	def main():
 	    client_carriots = Client ("YOUR APIKEY")
 	    my_at = int(time.mktime(datetime.datetime.utcnow().timetuple()))
@@ -20,7 +20,7 @@ Usage
 	            "at": my_at,
 	            "data": {"KEY":"VALUE"}
 	            }
-	    carriots_response = client_carriots.send(data)
+	    carriots_response = client_carriots.send(data, 'stream')
 	    return 0
 	
 	if __name__ == '__main__':
