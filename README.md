@@ -10,22 +10,20 @@ Usage: Example send stream
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
 	from clicarriots import Client
-	import time, datetime
+	from datetime import datetime
 
 	def main():
 	    client_carriots = Client ("YOUR APIKEY")
-	    my_at = int(time.mktime(datetime.datetime.utcnow().timetuple()))
+	    
+	    my_at = datetime.utcnow()
 	    
 	    data = {"KEY":"VALUE"}
-
+	    
 	    code, response = client_carriots.send('YOUR ID DEVELOPER DEVICE', 
-	    										 data, 
-	    										 my_at, 
-	    										 'stream')
+	    									  data, my_at, 'stream')
 	    return code, response
 	
 	if __name__ == '__main__':
 	    code, response = main()
-	    print code
-	    print response
+	    print code, response
 		
