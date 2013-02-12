@@ -1,4 +1,3 @@
-import urllib2
 import json
 import time
 from datetime import datetime
@@ -6,8 +5,18 @@ from client import ClientBase
 
 class Stream (ClientBase):
 
-    def send (self, device, data, at, type = 'stream'):
-        self._check(device, data, at, type)
+    def send (self, device, data, at, type = 'stream'):        
+        if not isinstance(device, str):
+            raise TypeError('device type not valid')
+        
+        if not isinstance(data, dict):
+            raise TypeError('data type not valid')
+        
+        if not isinstance(at, datetime):
+            raise TypeError('at type not valid')
+        
+        if not isinstance(type, str):
+            raise TypeError('type type not valid')
 
         if type == 'stream':
             url = ClientBase.api_url + 'streams' 
@@ -24,9 +33,9 @@ class Stream (ClientBase):
                   "data": data}
 
         self.data = json.dumps(stream)
-        request = urllib2.Request(url, self.data, self.headers)
-        response = urllib2.urlopen(request)
-        return self._response(response)
+        
+        response = self.request(url, self.data)
+        return response
 
 class Device (ClientBase):
 
@@ -37,9 +46,8 @@ class Device (ClientBase):
         else:
             raise ValueError('device value not valid')
 
-        request = urllib2.Request(url, headers=self.headers)
-        self.response = urllib2.urlopen(request)
-        return self._response(self.response)
+        response = self.request(url)
+        return response
 
 class Dropbox (ClientBase):
 
@@ -64,6 +72,5 @@ class Dropbox (ClientBase):
         if mime:
             url = url + "&mime=" + mime
 
-        request = urllib2.Request(url, headers=self.headers)
-        self.response = urllib2.urlopen(request)
-        return self._response(self.response)
+        response = self.request(url)
+        return response

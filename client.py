@@ -1,3 +1,4 @@
+import urllib2
 from datetime import datetime
 class ClientBase (object):
     api_url = "http://api.carriots.com/"
@@ -13,18 +14,11 @@ class ClientBase (object):
                         'Accept': self.content_type,
                         'Carriots.apikey': self.api_key}
     
-    def _response (self, response):
+    def request(self, url, body = ''):
+        if body:
+            request = urllib2.Request(url, self.data, self.headers)
+        else:
+            request = urllib2.Request(url, headers=self.headers)
+            
+        response = urllib2.urlopen(request)
         return response.code, response.read()
-    
-    def _check (self, device, data, at, type):
-        if not isinstance(device, str):
-            raise TypeError('device type not valid')
-        
-        if not isinstance(data, dict):
-            raise TypeError('data type not valid')
-        
-        if not isinstance(at, datetime):
-            raise TypeError('at type not valid')
-        
-        if not isinstance(type, str):
-            raise TypeError('type type not valid')
