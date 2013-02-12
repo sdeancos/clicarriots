@@ -9,11 +9,11 @@ Usage: Example send stream
 --------------------------
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	from clicarriots import Client
+	from clicarriots import clicarriots
 	from datetime import datetime
 
 	def main():
-	    client_carriots = Client ("YOUR APIKEY")
+	    client_carriots = clicarriots.Client ("YOUR APIKEY")
 	    
 	    my_at = datetime.utcnow()
 	    
