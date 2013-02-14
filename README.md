@@ -31,5 +31,5 @@ Example get device
 	from clicarriots import api
 
 	client_device = api.Device("YOUR APIKEY")
-	code, response = client_device.get("YOUR USERNAME", "all")
+	code, response = client_device.get("YOUR USERNAME")
 	return code, response
