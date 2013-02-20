@@ -5,6 +5,11 @@ The unofficial simple client for carriots platform (in progress)
 
 You can find more information about carriots in http://www.carriots.com/
 
+Install
+=======
+
+	$ sudo pip install git+https://github.com/sdeancos/clicarriots.git#egg=clicarriots 
+
 Usage
 =====
 
