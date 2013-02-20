@@ -3,7 +3,7 @@ from datetime import datetime
 class ClientBase (object):
     api_url = "http://api.carriots.com/"
 
-    def __init__ (self, api_key = None, client_type = 'json', protocol = 'v2'):
+    def __init__ (self, api_key = None, client_type = 'json', protocol = 'v1'):
         self.api_key = api_key
         self.client_type = client_type
         self.protocol = protocol
