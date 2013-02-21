@@ -3,9 +3,13 @@ clicarriots.py
 
 The unofficial simple client for carriots platform (in progress)
 
-Created by Samuel de Ancos (Core developer Carriots)
-
 You can find more information about carriots in http://www.carriots.com/
+
+Author
+------
+
+Samuel de Ancos - sdeancos@gmail.com (Core developer Carriots)
+
 
 Install
 =======
