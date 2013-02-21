@@ -3,18 +3,22 @@ clicarriots.py
 
 The unofficial simple client for carriots platform (in progress)
 
-You can find more information about carriots in http://www.carriots.com/
+You can find more information about carriots in http://www.carriots.com/ 
+
+Forum: http://forum.carriots.com/
+
+Blog: https://blog.carriots.com/
 
 Author
 ------
 
-Samuel de Ancos - sdeancos@gmail.com (Core developer Carriots)
+Samuel de Ancos Martín - sdeancos@gmail.com (Core developer Carriots)
 
 
 Install
 =======
 
-	$ sudo pip install git+https://github.com/sdeancos/clicarriots.git#egg=clicarriots 
+	$ sudo pip install git+https://github.com/sdeancos/clicarriots.git#egg=clicarriots
 
 Usage
 =====
