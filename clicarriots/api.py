@@ -36,6 +36,13 @@ class Stream (ClientBase):
         
         response = self.request(url, self.data)
         return response
+    
+    def list (self, params = None):
+        url = ClientBase.api_url + "streams/?"
+        url = get_params(url, params)
+                
+        response = self.request(url)
+        return response
 
 class Device (ClientBase):
 
@@ -46,6 +53,13 @@ class Device (ClientBase):
         else:
             raise ValueError('device value not valid')
 
+        response = self.request(url)
+        return response
+    
+    def list (self, params = None):
+        url = ClientBase.api_url + "devices/?"
+        url = get_params(url, params)
+                
         response = self.request(url)
         return response
 
@@ -74,3 +88,14 @@ class Dropbox (ClientBase):
 
         response = self.request(url)
         return response
+
+def get_params(url, params):
+    if params:
+        if not isinstance(params, dict):
+            raise TypeError('data type not valid')
+        
+        for key, value in params.items():
+            url = url + key + "=" + value + "&"
+        url = url[:-1]
+    
+    return url

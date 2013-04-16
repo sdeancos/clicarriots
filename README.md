@@ -33,6 +33,22 @@ Example send stream
 	data = {"KEY":"VALUE"}
 	code, response = client_stream.send('YOUR ID DEVELOPER DEVICE', data, my_at, 'stream')
 
+Example get list streams
+------------------------
+	from clicarriots import api
+	from datetime import datetime
+
+	client_stream = api.Stream("YOUR APIKEY")
+	
+	#without params
+	code, response = client_stream.list()
+	
+	#with params
+	code, response = client_stream.list({"id_device": "MY ID DEVELOPER DEVICE"})
+	
+	return code, response
+
+
 Example get urls dropbox
 ------------------------
 	from clicarriots import api
@@ -41,10 +57,24 @@ Example get urls dropbox
 	code, response = client_dropbox.get("YOUR USERNAME", op = "all", mime = "video") 
 	return code, response
 	
-Example get device
-------------------
+Example get a device
+--------------------
 	from clicarriots import api
 
 	client_device = api.Device("YOUR APIKEY")
 	code, response = client_device.get("YOUR USERNAME")
+	return code, response
+
+Example get list devices
+------------------------
+	from clicarriots import api
+
+	client_device = api.Device("YOUR APIKEY")
+	
+	#without params
+	code, response = client_device.list()
+	
+	#with params
+	code, response = client_device.list({"name": "MY DEVICE NAME"})
+
 	return code, response
