@@ -14,9 +14,9 @@ Author
 
 Samuel de Ancos Martín (Core developer Carriots https://www.carriots.com/about_us)
 
-sdeancos@gmail.com (Core developer Carriots)
+My Email: sdeancos@gmail.com
 
-http://www.deancos.com
+My Website: http://www.deancos.com
 
 
 Install
