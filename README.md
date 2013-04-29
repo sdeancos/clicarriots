@@ -12,7 +12,7 @@ Blog: https://blog.carriots.com/
 Author
 ------
 
-Samuel de Ancos Martín
+Samuel de Ancos Martín (Core developer Carriots https://www.carriots.com/about_us)
 
 sdeancos@gmail.com (Core developer Carriots)
 
