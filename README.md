@@ -27,6 +27,9 @@ Install
 Usage
 =====
 
+Stream
+======
+
 Example send stream
 -------------------
 	from clicarriots import api
@@ -52,6 +55,8 @@ Example get list streams
 	
 	return code, response
 
+Dropbox
+=======
 
 Example get urls dropbox
 ------------------------
@@ -60,7 +65,10 @@ Example get urls dropbox
 	client_dropbox = api.Dropbox("YOUR APIKEY")
 	code, response = client_dropbox.get("YOUR USERNAME", op = "all", mime = "video") 
 	return code, response
-	
+
+Device
+======
+
 Example get a device
 --------------------
 	from clicarriots import api
