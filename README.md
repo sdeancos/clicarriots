@@ -38,7 +38,17 @@ Example send stream
 	client_stream = api.Stream("YOUR APIKEY")
 	my_at = datetime.utcnow()
 	data = {"KEY":"VALUE"}
-	code, response = client_stream.send('YOUR ID DEVELOPER DEVICE', data, my_at, 'stream')
+	code, response = client_stream.send('ID_DEVELOPER_DEVICE', data, my_at, 'stream')
+
+Example get stream
+------------------
+	from clicarriots import api
+	from datetime import datetime
+
+	client_stream = api.Stream("YOUR APIKEY")
+
+	code, response = client_stream.get("ID_DEVELOPER_Stream")
+	return code, response
 
 Example get list streams
 ------------------------
@@ -74,7 +84,7 @@ Example get a device
 	from clicarriots import api
 
 	client_device = api.Device("YOUR APIKEY")
-	code, response = client_device.get("YOUR USERNAME")
+	code, response = client_device.get("ID_DEVELOPER_DEVICE")
 	return code, response
 
 Example get list devices
@@ -89,4 +99,44 @@ Example get list devices
 	#with params
 	code, response = client_device.list({"name": "MY DEVICE NAME"})
 
+	return code, response
+
+Example create a device
+-----------------------
+	from clicarriots import api
+
+	client_device = api.Device("YOUR APIKEY")
+	data = {} # Valid json
+	code, response = client_device.create(data)
+	return code, response
+
+Example update a device
+-----------------------
+	from clicarriots import api
+
+	client_device = api.Device("YOUR APIKEY")
+	data = {} # Valid json
+	code, response = client_device.update("ID_DEVELOPER_DEVICE", data)
+	return code, response
+
+Example delete a device
+-----------------------
+	from clicarriots import api
+
+	client_device = api.Device("YOUR APIKEY")
+	code, response = client_device.delete("ID_DEVELOPER_DEVICE")
+	return code, response
+
+Example get types and sensors
+-----------------------------
+	from clicarriots import api
+
+	client_device = api.Device("YOUR APIKEY")
+	
+	# Get Types
+	code, response = client_device.get_types()
+	
+	# Get Sensors
+	code, response = client_device.get_sensors()
+	
 	return code, response

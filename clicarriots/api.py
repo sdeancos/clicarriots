@@ -104,7 +104,7 @@ class Device (ClientBase):
         response = self.request(url)
         return response
     
-    def create (self, device, data):
+    def create (self, data):
         url = ClientBase.api_url + "devices/"
         
         # Falta validar DATA
@@ -114,6 +114,10 @@ class Device (ClientBase):
     
     def update (self, device, data):
         url = ClientBase.api_url + "devices/"
+        if device:
+            url = url + device + "/"
+        else:
+            raise ValueError('device value not valid')
         
         # Falta validar DATA
                 
