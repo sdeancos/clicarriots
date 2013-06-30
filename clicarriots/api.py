@@ -1,4 +1,5 @@
-# copyright (c) 2012/13 by Samuel de Ancos.
+# copyright (c) 2012/13 by Samuel de Ancos
+# http://deancos.com | sdeancos@gmail.com
 
 from json import dumps
 from time import mktime
