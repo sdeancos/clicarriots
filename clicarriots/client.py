@@ -1,4 +1,6 @@
 import urllib2
+from json import loads
+import json
 from datetime import datetime
 class ClientBase (object):
     api_url = "https://api.carriots.com/"
@@ -14,12 +16,66 @@ class ClientBase (object):
                         'Accept': self.content_type,
                         'Carriots.apikey': self.api_key}
     
-    def request(self, url, body = ''):
-        if body:
-            request = urllib2.Request(url, self.data, self.headers)
+    def request (self, url, data = '', method = 'GET'):
+        if 'GET' == method:
+            response = self.method_get(url)
+        elif 'POST' == method:
+            response = self.method_post(url, data)
+        elif 'PUT' == method:
+            response = self.method_put(url, data)
+        elif 'DELETE' == method:
+            response = self.method_delete(url)
         else:
-            request = urllib2.Request(url, headers=self.headers)
+            raise ValueError('method not valid')
         
-        response = urllib2.urlopen(request)
+        # Falta ver tipo de error y mandar el mensaje correcto!
+        if 401 == response:
+            return 401, "Unauthorized"
+        
+        return response.code, json.loads(response.read())
+    
+    def method_get (self, url):
+        request = urllib2.Request(url, headers=self.headers)
+        
+        try:
+            response = urllib2.urlopen(request)
+        except urllib2.HTTPError:
+            return 401
 
-        return response.code, response.read()
+        return response
+    
+    def method_post (self, url, data):
+        request = urllib2.Request(url, data=data, headers=self.headers)
+        
+        try:
+            response = urllib2.urlopen(request)
+        except urllib2.HTTPError:
+            return 401
+
+        return response
+    
+    def method_put (self, url):
+        opener = urllib2.build_opener(urllib2.HTTPHandler)
+        request = urllib2.Request(url, data=data, headers=self.headers)
+
+        request.get_method = lambda: 'PUT'
+        
+        try:
+            response = opener.open(request)
+        except urllib2.HTTPError:
+            return 401
+
+        return response
+    
+    def method_delete (self, url):
+        opener = urllib2.build_opener(urllib2.HTTPHandler)
+        request = urllib2.Request(url, headers=self.headers)
+            
+        request.get_method = lambda: 'DELETE'
+        
+        try:
+            response = opener.open(request)
+        except urllib2.HTTPError:
+            return 401
+
+        return response

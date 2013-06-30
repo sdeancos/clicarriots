@@ -1,9 +1,36 @@
-import json
-import time
-from datetime import datetime
+from json import dumps
+from time import mktime
 from client import ClientBase
 
+class Utils (ClientBase):
+    
+    def get_time_zones(self):
+        url = ClientBase.api_url + "time_zones/"
+
+        code, response = self.request(url)
+
+        response = [time_zones['tz'] for time_zones in response['result']]
+        return code, response
+    
+    def get_locales(self):
+        url = ClientBase.api_url + "locales/"
+
+        code, response = self.request(url)
+
+        response = [locales['locale'] for locales in response['result']]
+        return code, response
+
 class Stream (ClientBase):
+    
+    def get (self, stream):
+        url = ClientBase.api_url + "streams/"
+        if stream:
+            url = url + stream + "/"
+        else:
+            raise ValueError('stream value not valid')
+
+        response = self.request(url)
+        return response
 
     def send (self, device, data, at, type = 'stream'):        
         if not isinstance(device, str):
@@ -43,8 +70,22 @@ class Stream (ClientBase):
                 
         response = self.request(url)
         return response
+    
+    def delete (self, stream):
+        url = ClientBase.api_url + "streams/"
+        if stream:
+            url = url + stream + "/"
+        else:
+            raise ValueError('stream value not valid')
+
+        response = self.request(url, method="DELETE")
+        return response
 
 class Device (ClientBase):
+    
+    def new (self, data):
+        # Este metodo crea un Objecto device para create y update valido.
+        pass
 
     def get (self, device):
         url = ClientBase.api_url + "devices/"
@@ -62,6 +103,48 @@ class Device (ClientBase):
                 
         response = self.request(url)
         return response
+    
+    def create (self, device, data):
+        url = ClientBase.api_url + "devices/"
+        
+        # Falta validar DATA
+                
+        response = self.request(url, data=data, method="POST")
+        return response
+    
+    def update (self, device, data):
+        url = ClientBase.api_url + "devices/"
+        
+        # Falta validar DATA
+                
+        response = self.request(url, data=data, method="PUT")
+        return response
+    
+    def delete (self, device):
+        url = ClientBase.api_url + "devices/"
+        if device:
+            url = url + device + "/"
+        else:
+            raise ValueError('device value not valid')
+
+        response = self.request(url, method="DELETE")
+        return response
+    
+    def get_types(self):
+        url = ClientBase.api_url + "types/"
+
+        code, response = self.request(url)
+
+        response = [type['type'] for type in response['result']]
+        return code, response
+    
+    def get_sensors(self):
+        url = ClientBase.api_url + "sensors/"
+
+        code, response = self.request(url)
+
+        response = [sensor['sensor'] for sensor in response['result']]
+        return code, response
 
 class Dropbox (ClientBase):
 
