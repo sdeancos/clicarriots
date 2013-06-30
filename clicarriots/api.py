@@ -1,3 +1,5 @@
+# copyright (c) 2012/13 by Samuel de Ancos.
+
 from json import dumps
 from time import mktime
 from client import ClientBase

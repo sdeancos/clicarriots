@@ -1,3 +1,6 @@
+# copyright (c) 2012/13 by Samuel de Ancos
+# http://deancos.com | sdeancos@gmail.com
+
 import urllib2
 from json import loads
 import json
