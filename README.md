@@ -73,7 +73,7 @@ Example get urls dropbox
 	from clicarriots import api
 
 	client_dropbox = api.Dropbox("YOUR APIKEY")
-	code, response = client_dropbox.get("YOUR USERNAME", op = "all", mime = "video") 
+	code, response = client_dropbox.get("YOUR FILE IN DROPBOX", op = "all", mime = "video") 
 	return code, response
 
 Device
