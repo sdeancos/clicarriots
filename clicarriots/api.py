@@ -64,8 +64,8 @@ class Stream (ClientBase):
                   "data": data}
 
         self.data = dumps(stream)
-        
-        response = self.request(url, self.data)
+
+        response = self.request(url, data=self.data, method="POST")
         return response
     
     def list (self, params = None):
