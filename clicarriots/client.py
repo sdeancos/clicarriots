@@ -31,9 +31,7 @@ class ClientBase (object):
         else:
             raise ValueError('method not valid')
         
-        if 201 != response.code:
-            if 'reason' not in response:
-                return response.code, 'Fail'
+        if 20 in response.code:    
             return response.code, response.reason
         
         return response.code, json.loads(response.read())
