@@ -30,7 +30,10 @@ class ClientBase (object):
             response = self.method_delete(url)
         else:
             raise ValueError('method not valid')
-                
+        
+        if 200 != response.code:
+            return response.code, response.reason
+        
         return response.code, json.loads(response.read())
     
     def method_get (self, url):
@@ -39,7 +42,7 @@ class ClientBase (object):
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError:
-            return response
+            return urllib2.HTTPError
 
         return response
     
@@ -49,7 +52,7 @@ class ClientBase (object):
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError:
-            return response
+            return urllib2.HTTPError
 
         return response
     
@@ -62,7 +65,7 @@ class ClientBase (object):
         try:
             response = opener.open(request)
         except urllib2.HTTPError:
-            return response
+            return urllib2.HTTPError
 
         return response
     
@@ -75,6 +78,6 @@ class ClientBase (object):
         try:
             response = opener.open(request)
         except urllib2.HTTPError:
-            return response
+            return urllib2.HTTPError
 
         return response
