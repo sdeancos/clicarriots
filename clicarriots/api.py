@@ -56,7 +56,7 @@ class Stream (ClientBase):
         else:
             raise ValueError('type value not valid')
             
-        at_timestamp = int(time.mktime(at.timetuple()))
+        at_timestamp = int(mktime(at.timetuple()))
 
         stream = {"protocol": self.protocol,
                   "device": device,
