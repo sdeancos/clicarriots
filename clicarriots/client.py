@@ -30,11 +30,7 @@ class ClientBase (object):
             response = self.method_delete(url)
         else:
             raise ValueError('method not valid')
-        
-        # Falta ver tipo de error y mandar el mensaje correcto!
-        if 401 == response:
-            return 401, json.loads(response.read())#"Unauthorized"
-        
+                
         return response.code, json.loads(response.read())
     
     def method_get (self, url):
@@ -43,7 +39,7 @@ class ClientBase (object):
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError:
-            return 401
+            return response
 
         return response
     
@@ -53,7 +49,7 @@ class ClientBase (object):
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError:
-            return 401
+            return response
 
         return response
     
@@ -66,7 +62,7 @@ class ClientBase (object):
         try:
             response = opener.open(request)
         except urllib2.HTTPError:
-            return 401
+            return response
 
         return response
     
@@ -79,6 +75,6 @@ class ClientBase (object):
         try:
             response = opener.open(request)
         except urllib2.HTTPError:
-            return 401
+            return response
 
         return response
