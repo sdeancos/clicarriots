@@ -2,7 +2,7 @@
 # http://deancos.com | sdeancos@gmail.com
 
 from json import dumps
-from time import mktime
+from time import time, mktime
 from datetime import datetime
 from client import ClientBase
 
