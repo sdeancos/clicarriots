@@ -153,6 +153,17 @@ class Device (ClientBase):
         response = [sensor['sensor'] for sensor in response['result']]
         return code, response
 
+class DeviceConfig (ClientBase):
+    def create (self, device, data):
+        url = ClientBase.api_url + "devices/"
+        if device:
+            url = url + device + "/deviceconfigs/" 
+        else:
+            raise ValueError('device value not valid')
+                   
+        response = self.request(url, data=data, method="POST")
+        return response
+
 class Dropbox (ClientBase):
 
     def get (self, username, op = '', name = '', mime = ''):
