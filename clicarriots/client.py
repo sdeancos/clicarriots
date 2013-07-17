@@ -33,7 +33,7 @@ class ClientBase (object):
         
         # Falta ver tipo de error y mandar el mensaje correcto!
         if 401 == response:
-            return 401, "Unauthorized"
+            return 401, json.loads(response.read())#"Unauthorized"
         
         return response.code, json.loads(response.read())
     
