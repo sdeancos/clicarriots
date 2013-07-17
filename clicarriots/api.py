@@ -63,7 +63,7 @@ class Stream (ClientBase):
                   "at": at_timestamp,
                   "data": data}
 
-        self.data = json.dumps(stream)
+        self.data = dumps(stream)
         
         response = self.request(url, self.data)
         return response
