@@ -41,8 +41,8 @@ class ClientBase (object):
         
         try:
             response = urllib2.urlopen(request)
-        except urllib2.HTTPError:
-            return urllib2.HTTPError
+        except urllib2.HTTPError, e:
+            return e
 
         return response
     
@@ -51,8 +51,8 @@ class ClientBase (object):
         
         try:
             response = urllib2.urlopen(request)
-        except urllib2.HTTPError:
-            return urllib2.HTTPError
+        except urllib2.HTTPError, e:
+            return e
 
         return response
     
@@ -64,8 +64,8 @@ class ClientBase (object):
         
         try:
             response = opener.open(request)
-        except urllib2.HTTPError:
-            return urllib2.HTTPError
+        except urllib2.HTTPError, e:
+            return e
 
         return response
     
@@ -77,7 +77,7 @@ class ClientBase (object):
         
         try:
             response = opener.open(request)
-        except urllib2.HTTPError:
-            return urllib2.HTTPError
+        except urllib2.HTTPError, e:
+            return e
 
         return response
