@@ -36,7 +36,8 @@ Example send stream
 	from datetime import datetime
 
 	client_stream = api.Stream("YOUR APIKEY")
-	my_at = datetime.utcnow()
+	my_at = datetime.now()
+	#my_at = 'now'
 	data = {"KEY":"VALUE"}
 	code, response = client_stream.send('ID_DEVELOPER_DEVICE', data, my_at, 'stream')
 
