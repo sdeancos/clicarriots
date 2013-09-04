@@ -61,7 +61,7 @@ class Stream (ClientBase):
 
         stream = {"protocol": self.protocol,
                   "device": device,
-                  "at": at_timestamp,
+                  "at": at,
                   "data": data}
 
         self.data = dumps(stream)
