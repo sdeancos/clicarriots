@@ -43,7 +43,7 @@ class Stream (ClientBase):
         if not isinstance(data, dict):
             raise TypeError('data type not valid')
         
-        if not isinstance(at, datetime):
+        if not isinstance(at, datetime) and not 'now':
             raise TypeError('at type not valid')
         
         if not isinstance(type, str):
@@ -55,8 +55,9 @@ class Stream (ClientBase):
             url = ClientBase.api_url + 'status'
         else:
             raise ValueError('type value not valid')
-            
-        at_timestamp = int(mktime(at.timetuple()))
+        
+        if at != 'now':     
+            at = int(mktime(at.timetuple()))
 
         stream = {"protocol": self.protocol,
                   "device": device,
