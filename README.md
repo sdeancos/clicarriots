@@ -3,7 +3,9 @@ clicarriots.py
 
 The unofficial simple client for carriots platform (in progress)
 
-You can find more information about carriots in http://www.carriots.com/ 
+You can find more information about carriots in http://www.carriots.com/
+
+This client only support part of API from Carriots.com: Stream and Device.
 
 Forum: http://forum.carriots.com/
 
@@ -12,7 +14,7 @@ Blog: https://blog.carriots.com/
 Author
 ------
 
-Samuel de Ancos Martín (Core developer Carriots https://www.carriots.com/about_us)
+Samuel de Ancos Martín (Core developer Carriots)
 
 My Email: sdeancos@gmail.com
 
