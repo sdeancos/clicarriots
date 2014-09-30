@@ -1,7 +1,7 @@
 clicarriots.py
 ===============
 
-The unofficial simple client for carriots platform (in progress)
+The unofficial simple client for carriots platform (in progress) (python 2.x/3.x)
 
 You can find more information about carriots in http://www.carriots.com/
 
@@ -42,6 +42,7 @@ Example send stream
 	#my_at = 'now'
 	data = {"KEY":"VALUE"}
 	code, response = client_stream.send('ID_DEVELOPER_DEVICE', data, my_at, 'stream')
+	print(code, response)
 
 Example get stream
 ------------------
@@ -51,7 +52,7 @@ Example get stream
 	client_stream = api.Stream("YOUR APIKEY")
 
 	code, response = client_stream.get("ID_DEVELOPER_Stream")
-	return code, response
+	print(code, response)
 
 Example get list streams
 ------------------------
@@ -64,9 +65,9 @@ Example get list streams
 	code, response = client_stream.list()
 	
 	#with params
-	code, response = client_stream.list({"id_device": "MY ID DEVELOPER DEVICE"})
+	code, response = client_stream.list({"device": "MY ID DEVELOPER DEVICE"})
 	
-	return code, response
+	print(code, response)
 
 Dropbox
 =======
@@ -77,7 +78,7 @@ Example get urls dropbox
 
 	client_dropbox = api.Dropbox("YOUR APIKEY")
 	code, response = client_dropbox.get("YOUR FILE IN DROPBOX", op = "all", mime = "video") 
-	return code, response
+	print(code, response)
 
 Device
 ======
@@ -88,7 +89,7 @@ Example get a device
 
 	client_device = api.Device("YOUR APIKEY")
 	code, response = client_device.get("ID_DEVELOPER_DEVICE")
-	return code, response
+	print(code, response)
 
 Example get list devices
 ------------------------
@@ -102,7 +103,7 @@ Example get list devices
 	#with params
 	code, response = client_device.list({"name": "MY DEVICE NAME"})
 
-	return code, response
+	print(code, response)
 
 Example create a device
 -----------------------
@@ -111,7 +112,7 @@ Example create a device
 	client_device = api.Device("YOUR APIKEY")
 	data = {} # Valid json
 	code, response = client_device.create(data)
-	return code, response
+	print(code, response)
 
 Example update a device
 -----------------------
@@ -120,7 +121,7 @@ Example update a device
 	client_device = api.Device("YOUR APIKEY")
 	data = {} # Valid json
 	code, response = client_device.update("ID_DEVELOPER_DEVICE", data)
-	return code, response
+	print(code, response)
 
 Example delete a device
 -----------------------
@@ -128,7 +129,7 @@ Example delete a device
 
 	client_device = api.Device("YOUR APIKEY")
 	code, response = client_device.delete("ID_DEVELOPER_DEVICE")
-	return code, response
+	print(code, response)
 
 Example get types and sensors
 -----------------------------
@@ -142,4 +143,4 @@ Example get types and sensors
 	# Get Sensors
 	code, response = client_device.get_sensors()
 	
-	return code, response
+	print(code, response)

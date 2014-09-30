@@ -2,9 +2,10 @@
 # http://deancos.com | sdeancos@gmail.com
 
 from json import dumps
-from time import time, mktime
+from time import mktime
 from datetime import datetime
-from client import ClientBase
+from clicarriots.client import ClientBase
+
 
 class Utils (ClientBase):
     
@@ -24,9 +25,10 @@ class Utils (ClientBase):
         response = [locales['locale'] for locales in response['result']]
         return code, response
 
+
 class Stream (ClientBase):
     
-    def get (self, stream):
+    def get(self, stream):
         url = ClientBase.api_url + "streams/"
         if stream:
             url = url + stream + "/"
@@ -36,7 +38,7 @@ class Stream (ClientBase):
         response = self.request(url)
         return response
 
-    def send (self, device, data, at, type = 'stream'):        
+    def send(self, device, data, at, type='stream'):
         if not isinstance(device, str):
             raise TypeError('device type not valid')
         
@@ -69,14 +71,14 @@ class Stream (ClientBase):
         response = self.request(url, data=self.data, method="POST")
         return response
     
-    def list (self, params = None):
+    def list(self, params=None):
         url = ClientBase.api_url + "streams/?"
         url = get_params(url, params)
                 
         response = self.request(url)
         return response
     
-    def delete (self, stream):
+    def delete(self, stream):
         url = ClientBase.api_url + "streams/"
         if stream:
             url = url + stream + "/"
@@ -88,11 +90,11 @@ class Stream (ClientBase):
 
 class Device (ClientBase):
     
-    def new (self, data):
+    def new(self, data):
         # Este metodo crea un Objecto device para create y update valido.
         pass
 
-    def get (self, device):
+    def get(self, device):
         url = ClientBase.api_url + "devices/"
         if device:
             url = url + device + "/"
@@ -102,14 +104,14 @@ class Device (ClientBase):
         response = self.request(url)
         return response
     
-    def list (self, params = None):
+    def list(self, params = None):
         url = ClientBase.api_url + "devices/?"
         url = get_params(url, params)
                 
         response = self.request(url)
         return response
     
-    def create (self, data):
+    def create(self, data):
         url = ClientBase.api_url + "devices/"
         
         # Falta validar DATA
@@ -117,7 +119,7 @@ class Device (ClientBase):
         response = self.request(url, data=data, method="POST")
         return response
     
-    def update (self, device, data):
+    def update(self, device, data):
         url = ClientBase.api_url + "devices/"
         if device:
             url = url + device + "/"
@@ -129,7 +131,7 @@ class Device (ClientBase):
         response = self.request(url, data=data, method="PUT")
         return response
     
-    def delete (self, device):
+    def delete(self, device):
         url = ClientBase.api_url + "devices/"
         if device:
             url = url + device + "/"
@@ -155,8 +157,9 @@ class Device (ClientBase):
         response = [sensor['sensor'] for sensor in response['result']]
         return code, response
 
+
 class DeviceConfig (ClientBase):
-    def create (self, device, data):
+    def create(self, device, data):
         url = ClientBase.api_url + "devices/"
         if device:
             url = url + device + "/deviceconfigs/" 
@@ -166,9 +169,10 @@ class DeviceConfig (ClientBase):
         response = self.request(url, data=data, method="POST")
         return response
 
+
 class Dropbox (ClientBase):
 
-    def get (self, username, op = '', name = '', mime = ''):
+    def get(self, username, op='', name='', mime=''):
         url = ClientBase.api_url + "external/dropbox/user/"
         if username:
             url = url + username
@@ -191,6 +195,7 @@ class Dropbox (ClientBase):
 
         response = self.request(url)
         return response
+
 
 def get_params(url, params):
     if params:
