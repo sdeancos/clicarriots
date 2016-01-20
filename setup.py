@@ -4,7 +4,7 @@ setup(name='clicarriots',
       description = 'The unofficial simple client for carriots platform (in progress) (python 2.x/3.x)',
       author='Samuel de Ancos',
       author_email='sdeancos@gmail.com',
-      url = 'https://github.com/sdeancos/clicarriotas',
+      url = 'https://github.com/sdeancos/clicarriots',
       download_url = 'https://github.com/sdeancos/clicarriotas/tarball/0.1',
       packages=['clicarriots'],
       )
