@@ -5,6 +5,6 @@ setup(name='clicarriots',
       author='Samuel de Ancos',
       author_email='sdeancos@gmail.com',
       url = 'https://github.com/sdeancos/clicarriots',
-      download_url = 'https://github.com/sdeancos/clicarriotas/tarball/0.1',
+      download_url = 'https://github.com/sdeancos/clicarriots/tarball/0.1',
       packages=['clicarriots'],
       )
