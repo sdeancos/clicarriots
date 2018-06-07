@@ -1,10 +1,11 @@
-# copyright (c) 2012/13 by Samuel de Ancos
+# copyright (c) 2012-2018 by Samuel de Ancos
 # http://deancos.com | sdeancos@gmail.com
 
 try:
     import urllib.request as urllib2
-except:
+except ImportError:
     import urllib2
+
 import json
 
 
@@ -19,8 +20,8 @@ class ClientBase (object):
         self.headers = {'User-Agent': 'clicarriots',
                         'Content-Type': self.content_type,
                         'Accept': self.content_type,
-                        'Carriots.apikey': self.api_key}
-    
+                        'Carriots-apikey': self.api_key}
+
     def request(self, url, data='', method='GET'):
         if 'GET' == method:
             response = self.method_get(url)
@@ -32,52 +33,52 @@ class ClientBase (object):
             response = self.method_delete(url)
         else:
             raise ValueError('method not valid')
-        
-        if '20' not in str(response.code):    
+
+        if '20' not in str(response.code):
             return response.code, response.reason
-        
+
         response_json_str = response.read().decode("utf-8")
         return response.code, json.loads(response_json_str)
-    
+
     def method_get(self, url):
         request = urllib2.Request(url, headers=self.headers)
-        
+
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError as e:
             return e
 
         return response
-    
+
     def method_post(self, url, data):
         request = urllib2.Request(url, data=data, headers=self.headers)
-        
+
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError as e:
             return e
 
         return response
-    
+
     def method_put(self, url, data):
         opener = urllib2.build_opener(urllib2.HTTPHandler)
         request = urllib2.Request(url, data=data, headers=self.headers)
 
         request.get_method = lambda: 'PUT'
-        
+
         try:
             response = opener.open(request)
         except urllib2.HTTPError as e:
             return e
 
         return response
-    
+
     def method_delete(self, url):
         opener = urllib2.build_opener(urllib2.HTTPHandler)
         request = urllib2.Request(url, headers=self.headers)
-            
+
         request.get_method = lambda: 'DELETE'
-        
+
         try:
             response = opener.open(request)
         except urllib2.HTTPError as e:

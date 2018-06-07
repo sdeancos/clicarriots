@@ -1,5 +1,7 @@
-clicarriots.py
+clicarriots (version 0.2.0)
 ===============
+
+[![Downloads](http://pepy.tech/badge/clicarriots)](http://pepy.tech/project/clicarriots)
 
 The unofficial simple client for carriots platform (in progress) (python 2.x/3.x)
 
@@ -24,7 +26,7 @@ My Website: http://www.deancos.com
 Install
 =======
 
-	$ sudo pip install git+https://github.com/sdeancos/clicarriots.git#egg=clicarriots
+	$ pip install clicarriots
 
 Usage
 =====
